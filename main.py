@@ -20,6 +20,7 @@ y = int((screen_height / 2) - (window_height / 2))
 app.geometry(f"{window_width}x{window_height}+{x}+{y}")
 # https://www.geeksforgeeks.org/how-to-center-a-window-on-the-screen-in-tkinter/
 
+
 # Input fields
 
 tk.Label(app, text="Date (DD-MM-YYYY)").grid(row=0, column=0, sticky="e")
@@ -49,6 +50,11 @@ date_entry.grid(row=5, column=1, columnspan=2)
 tk.Label(app, text="Status").grid(row=6, column=0, sticky="e")
 date_entry = tk.Entry(app)
 date_entry.grid(row=6, column=1, columnspan=2)
+
+# Centering the input fields, and keep it where they are
+app.grid_columnconfigure(0, weight=1)
+app.grid_columnconfigure(1, weight=1)
+app.grid_columnconfigure(2, weight=1)
 
 
 # Starts the loop
