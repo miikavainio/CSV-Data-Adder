@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 import csv
 from datetime import datetime
+from info import create_info_button
 
 # Creates the window, title and size
 app = tk.Tk()
@@ -23,39 +24,46 @@ app.geometry(f"{window_width}x{window_height}+{x}+{y}")
 
 # Input fields
 
-tk.Label(app, text="Date (DD-MM-YYYY)").grid(row=0, column=0, sticky="e")
+tk.Label(app, text="Date (DD-MM-YYYY)").grid(row=0, column=0, sticky="e", padx=10, pady=5)
 date_entry = tk.Entry(app)
-date_entry.grid(row=0, column=1, columnspan=2)
+date_entry.insert(0, datetime.now().strftime('%d-%m-%Y'))  # Default date is current day
+date_entry.grid(row=0, column=1, columnspan=2, pady=5)
 
-tk.Label(app, text="Start Time (HH:MM)").grid(row=1, column=0, sticky="e")
-date_entry = tk.Entry(app)
-date_entry.grid(row=1, column=1, columnspan=2)
+tk.Label(app, text="Start Time (HH:MM)").grid(row=1, column=0, sticky="e", padx=10, pady=5)
+start_time_entry = tk.Entry(app)
+start_time_entry.insert(0, "02:00")  # Default start time 02:00 since most of the games start then
+start_time_entry.grid(row=1, column=1, columnspan=2, pady=5)
 
-tk.Label(app, text="Home Team").grid(row=2, column=0, sticky="e")
+tk.Label(app, text="Home Team").grid(row=2, column=0, sticky="e", padx=10, pady=5)
 date_entry = tk.Entry(app)
 date_entry.grid(row=2, column=1, columnspan=2)
 
-tk.Label(app, text="Visitor Team").grid(row=3, column=0, sticky="e")
+tk.Label(app, text="Visitor Team").grid(row=3, column=0, sticky="e", padx=10, pady=5)
 date_entry = tk.Entry(app)
 date_entry.grid(row=3, column=1, columnspan=2)
 
-tk.Label(app, text="Home Score").grid(row=4, column=0, sticky="e")
+tk.Label(app, text="Home Score").grid(row=4, column=0, sticky="e", padx=10, pady=5)
 date_entry = tk.Entry(app)
 date_entry.grid(row=4, column=1, columnspan=2)
 
-tk.Label(app, text="Visitor Score").grid(row=5, column=0, sticky="e")
+tk.Label(app, text="Visitor Score").grid(row=5, column=0, sticky="e", padx=10, pady=5)
 date_entry = tk.Entry(app)
 date_entry.grid(row=5, column=1, columnspan=2)
 
-tk.Label(app, text="Status").grid(row=6, column=0, sticky="e")
+tk.Label(app, text="Status").grid(row=6, column=0, sticky="e", padx=10, pady=5)
 date_entry = tk.Entry(app)
 date_entry.grid(row=6, column=1, columnspan=2)
+
+# Submit Button
+submit_button = tk.Button(app, text="Add Game", width=17, bg="lightgreen")
+submit_button.grid(row=7, column=1, columnspan=2, pady=10)
 
 # Centering the input fields, and keep it where they are
 app.grid_columnconfigure(0, weight=1)
 app.grid_columnconfigure(1, weight=1)
 app.grid_columnconfigure(2, weight=1)
 
+create_info_button(app)
 
 # Starts the loop
 app.mainloop()
