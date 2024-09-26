@@ -1,4 +1,7 @@
-# CSV-Data-Adder
+# CSV-Data-Adder  
+
+I created this project to help adding data from ice hockey games into CSV files. This way it is more user friendly and saves time for me in future projects. Later I will use the collected data to create analysis based off it.  
+  
 Adding information to CSV file w/ Python &amp; tkinter
 
 ## Progress
