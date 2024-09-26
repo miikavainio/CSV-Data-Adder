@@ -21,7 +21,7 @@ y = int((screen_height / 2) - (window_height / 2))
 app.geometry(f"{window_width}x{window_height}+{x}+{y}")
 # https://www.geeksforgeeks.org/how-to-center-a-window-on-the-screen-in-tkinter/
 
-
+##############################################################################################
 # Input fields
 
 tk.Label(app, text="Date (DD-MM-YYYY)").grid(row=0, column=0, sticky="e", padx=10, pady=5)
@@ -54,6 +54,8 @@ tk.Label(app, text="Status").grid(row=6, column=0, sticky="e", padx=10, pady=5)
 date_entry = tk.Entry(app)
 date_entry.grid(row=6, column=1, columnspan=2)
 
+############################################################################################
+
 # Submit Button
 submit_button = tk.Button(app, text="Add Game", width=17, bg="lightgreen")
 submit_button.grid(row=7, column=1, columnspan=2, pady=10)
@@ -63,7 +65,12 @@ app.grid_columnconfigure(0, weight=1)
 app.grid_columnconfigure(1, weight=1)
 app.grid_columnconfigure(2, weight=1)
 
+# Info button
 create_info_button(app)
+
+# Success message label with default text "Welcome"
+success_label = tk.Label(app, text="Welcome to GameAdr!", fg="blue")
+success_label.grid(row=8, column=0, columnspan=3, pady=10)
 
 # Starts the loop
 app.mainloop()
