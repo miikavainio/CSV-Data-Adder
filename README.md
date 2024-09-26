@@ -15,4 +15,8 @@ The code will be edited in the future, so I will not show the current code
 Here I added paddings, default Date and Start  
 Added a button for game submitting.
 
-![Untitled2](https://github.com/user-attachments/assets/3308530a-0768-453c-8460-14df5b24bbd2)
+![Untitled2](https://github.com/user-attachments/assets/3308530a-0768-453c-8460-14df5b24bbd2)  
+
+Added instructions for the app, updated as necessary.
+
+![Screenshot 2024-09-26 174734](https://github.com/user-attachments/assets/974ef363-10c4-46c6-b0a5-c6cc51b60065)
