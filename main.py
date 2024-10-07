@@ -61,7 +61,7 @@ status_options = ["Regulation", "Overtime", "Shootout"]
 tk.Label(app, text="Status").grid(row=6, column=0, sticky="e", padx=10, pady=5)
 status_var = tk.StringVar(app)
 status_var.set("Regulation")
-status_combobox = ttk.Combobox(app, values=status_options)
+status_combobox = ttk.Combobox(app, values=status_options, textvariable=status_var, width=17)
 status_combobox.grid(row=6, column=1, columnspan=2, pady=5)
 
 ##################
