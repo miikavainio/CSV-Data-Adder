@@ -3,6 +3,7 @@ from tkinter import ttk, messagebox
 import csv
 from datetime import datetime
 from info import create_info_button
+from teams import teams
 
 # Creates the window, title and size
 app = tk.Tk()
@@ -56,8 +57,83 @@ date_entry.grid(row=6, column=1, columnspan=2)
 
 ############################################################################################
 
+# Status options
+status_options = ["Regulation", "Overtime", "Shootout"]
+
+
+##################
+
+def add_game():
+    # Get the date and start time from the entries
+    date_str = date_entry.get().strip()
+    start_time_str = start_time_entry.get().strip()
+    
+    if date_str == " ":
+        success_label.config(text="Date is mandatory!", fg="red")
+        return
+
+    if start_time_str == "":
+        success_label.config(text="Start Time is mandatory!", fg="red")
+        return
+    
+    if home_team_var.get() == "":
+        success_label.config(text="Home Team is mandatory!", fg="red")
+        return
+    
+    if visitor_team_var.get() == "":
+        success_label.config(text="Visitor Team is mandatory!", fg="red")
+        return
+
+    if home_score_entry.get().strip() == "":
+        success_label.config(text="Home Score is mandatory!", fg="red")
+        return
+
+    if visitor_score_entry.get().strip() == "":
+        success_label.config(text="Visitor Score is mandatory!", fg="red")
+        return
+
+    if status_var.get() == "Select Status":
+        success_label.config(text="Status is mandatory!", fg="red")
+        return
+
+    try:
+        date = datetime.strptime(date_str, '%d-%m-%Y').strftime('%d-%m-%Y')
+    except ValueError:
+        success_label.config(text="Date format should be DD-MM-YYYY!", fg="red")
+        return
+
+    # Get the input values
+    home_team = home_team_var.get()
+    home_score = home_score_entry.get().strip()
+    visitor_team = visitor_team_var.get()
+    visitor_score = visitor_score_entry.get().strip()
+    status = status_var.get()
+
+    # Validate scores
+    if not home_score.isdigit() or not visitor_score.isdigit():
+        success_label.config(text="Scores must be numbers!", fg="red")
+        return
+
+    # Save to CSV
+    with open('ice_hockey_games.csv', 'a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([date, start_time_str, home_team, home_score, visitor_team, visitor_score, status])
+
+    # Clear fields after saving, keeping the date field
+    start_time_entry.delete(0, tk.END)
+    start_time_entry.insert(0, "02:00")  # Reset to default start time
+    home_score_entry.delete(0, tk.END)
+    visitor_score_entry.delete(0, tk.END)
+    status_var.set("Select Status")
+    home_team_var.set("")  # Reset Home Team variable
+    visitor_team_var.set("")  # Reset Visitor Team variable
+
+    # Update success message
+    success_label.config(text="Game added successfully!", fg="green")
+
+
 # Submit Button
-submit_button = tk.Button(app, text="Add Game", width=17, bg="lightgreen")
+submit_button = tk.Button(app, text="Add Game", command=add_game, width=17, bg="lightgreen")
 submit_button.grid(row=7, column=1, columnspan=2, pady=10)
 
 # Centering the input fields, and keep it where they are
