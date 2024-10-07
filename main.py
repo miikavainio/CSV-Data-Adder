@@ -56,12 +56,12 @@ visitor_team_combobox.bind("<KeyRelease>", lambda event: update_suggestions(even
 visitor_team_combobox.bind("<<ComboboxSelected>>", lambda event: handle_combobox_select(event, visitor_team_combobox))
 
 tk.Label(app, text="Home Score").grid(row=4, column=0, sticky="e", padx=10, pady=5)
-date_entry = tk.Entry(app)
-date_entry.grid(row=4, column=1, columnspan=2)
+home_score_entry = tk.Entry(app)
+home_score_entry.grid(row=4, column=1, columnspan=2, pady=5)
 
 tk.Label(app, text="Visitor Score").grid(row=5, column=0, sticky="e", padx=10, pady=5)
-date_entry = tk.Entry(app)
-date_entry.grid(row=5, column=1, columnspan=2)
+visitor_score_entry = tk.Entry(app)
+visitor_score_entry.grid(row=5, column=1, columnspan=2, pady=5)
 
 
 ############################################################################################
