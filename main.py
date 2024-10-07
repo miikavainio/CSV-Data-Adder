@@ -64,7 +64,6 @@ date_entry = tk.Entry(app)
 date_entry.grid(row=5, column=1, columnspan=2)
 
 
-
 ############################################################################################
 
 # Status options
@@ -145,6 +144,39 @@ def add_game():
 
     # Update success message
     success_label.config(text="Game added successfully!", fg="green")
+
+
+######### suggestions function
+
+def update_suggestions(entry_var, combo_var):
+    query = entry_var.get().lower()
+    if query:
+        filtered_teams = [team for team in teams if team.lower().startswith(query)]
+        combo_var['values'] = filtered_teams
+        if filtered_teams:
+            combo_var.event_generate('<Down>')  # Open the dropdown only when there are suggestions
+    else:
+        combo_var.set("")  # Clear if empty
+
+def update_suggestions(event, combo_var):
+    query = combo_var.get().lower()
+    if len(query) > 0:
+        filtered_teams = [team for team in teams if team.lower().startswith(query)]
+        filtered_teams.append("Clear")
+        
+        combo_var['values'] = filtered_teams
+    
+        if filtered_teams:
+            combo_var.event_generate('<Down>')  # Open dropdown automatically
+    else:
+        combo_var['values'] = []  # Clear suggestions if no query
+
+#######################
+
+def handle_combobox_select(event, combo_var):
+    selected_value = combo_var.get()
+    if selected_value == "Clear":
+        combo_var.set("")
 
 
 # Submit Button
