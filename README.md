@@ -22,4 +22,14 @@ Added a button for game submitting.
 
 Added instructions for the app, updated as necessary.
 
-![Screenshot 2024-09-26 174734](https://github.com/user-attachments/assets/974ef363-10c4-46c6-b0a5-c6cc51b60065)
+![Screenshot 2024-09-26 174734](https://github.com/user-attachments/assets/974ef363-10c4-46c6-b0a5-c6cc51b60065)  
+
+Next, I will modify the status field to be clearer.  
+Regulation/Shootout/Ovetime will be options to choose from.  
+Regulation as a standard since it is clearly the most used option.  
+
+![status](https://github.com/user-attachments/assets/59b3b8a8-f7eb-4545-abdd-468b6ba0c144)  
+
+Dropdown:  
+![dropdown](https://github.com/user-attachments/assets/5d656547-2628-4606-9473-94a25f4862c9)
+
