@@ -51,15 +51,18 @@ tk.Label(app, text="Visitor Score").grid(row=5, column=0, sticky="e", padx=10, p
 date_entry = tk.Entry(app)
 date_entry.grid(row=5, column=1, columnspan=2)
 
-tk.Label(app, text="Status").grid(row=6, column=0, sticky="e", padx=10, pady=5)
-date_entry = tk.Entry(app)
-date_entry.grid(row=6, column=1, columnspan=2)
+
 
 ############################################################################################
 
 # Status options
 status_options = ["Regulation", "Overtime", "Shootout"]
 
+tk.Label(app, text="Status").grid(row=6, column=0, sticky="e", padx=10, pady=5)
+status_var = tk.StringVar(app)
+status_var.set("Regulation")
+status_combobox = ttk.Combobox(app, values=status_options)
+status_combobox.grid(row=6, column=1, columnspan=2, pady=5)
 
 ##################
 
