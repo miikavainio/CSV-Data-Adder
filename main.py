@@ -178,10 +178,15 @@ def handle_combobox_select(event, combo_var):
     if selected_value == "Clear":
         combo_var.set("")
 
+def submit_on_enter(event):
+    add_game()  # Call the add_game function
 
 # Submit Button
 submit_button = tk.Button(app, text="Add Game", command=add_game, width=17, bg="lightgreen")
 submit_button.grid(row=7, column=1, columnspan=2, pady=10)
+
+# Bind Enter key to the button
+app.bind('<Return>', submit_on_enter)
 
 # Centering the input fields, and keep it where they are
 app.grid_columnconfigure(0, weight=1)
