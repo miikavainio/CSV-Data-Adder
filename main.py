@@ -35,13 +35,25 @@ start_time_entry = tk.Entry(app)
 start_time_entry.insert(0, "02:00")  # Default start time 02:00 since most of the games start then
 start_time_entry.grid(row=1, column=1, columnspan=2, pady=5)
 
-tk.Label(app, text="Home Team").grid(row=2, column=0, sticky="e", padx=10, pady=5)
-date_entry = tk.Entry(app)
-date_entry.grid(row=2, column=1, columnspan=2)
+# tk.Label(app, text="Home Team").grid(row=2, column=0, sticky="e", padx=10, pady=5)
+# date_entry = tk.Entry(app)
+# date_entry.grid(row=2, column=1, columnspan=2)
 
+# Home Team Combobox
+tk.Label(app, text="Home Team").grid(row=2, column=0, sticky="e", padx=9, pady=3)
+home_team_var = tk.StringVar()
+home_team_combobox = ttk.Combobox(app, textvariable=home_team_var, width=17)
+home_team_combobox.grid(row=2, column=1, pady=5, padx=(34, 0))
+home_team_combobox.bind("<KeyRelease>", lambda event: update_suggestions(event, home_team_combobox))
+home_team_combobox.bind("<<ComboboxSelected>>", lambda event: handle_combobox_select(event, home_team_combobox))
+
+# Visitor Team Combobox
 tk.Label(app, text="Visitor Team").grid(row=3, column=0, sticky="e", padx=10, pady=5)
-date_entry = tk.Entry(app)
-date_entry.grid(row=3, column=1, columnspan=2)
+visitor_team_var = tk.StringVar()
+visitor_team_combobox = ttk.Combobox(app, textvariable=visitor_team_var, width=17)
+visitor_team_combobox.grid(row=3, column=1, pady=5, padx=(34, 0))
+visitor_team_combobox.bind("<KeyRelease>", lambda event: update_suggestions(event, visitor_team_combobox))
+visitor_team_combobox.bind("<<ComboboxSelected>>", lambda event: handle_combobox_select(event, visitor_team_combobox))
 
 tk.Label(app, text="Home Score").grid(row=4, column=0, sticky="e", padx=10, pady=5)
 date_entry = tk.Entry(app)
